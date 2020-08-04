@@ -37,6 +37,7 @@ class Helper extends Component {
   render() {
     return (
       <div>
+        {this.props.children}
         <img src={this.image.url} alt=""></img>
         <span style={this.styles} className={this.getBadgeClasses()}>
           {this.formatCounter()}
