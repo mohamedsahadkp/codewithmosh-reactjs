@@ -7,6 +7,7 @@ const movies = [
     genre: { _id: "5b21ca3eeb7f6fbccd471818", name: "Action" },
     numberInStock: 6,
     dailyRentalRate: 2.5,
+    like: false,
     publishDate: "2018-01-03T19:04:28.809Z",
   },
   {
@@ -15,6 +16,7 @@ const movies = [
     genre: { _id: "5b21ca3eeb7f6fbccd471818", name: "Action" },
     numberInStock: 5,
     dailyRentalRate: 2.5,
+    like: false,
   },
   {
     _id: "5b21ca3eeb7f6fbccd471817",
@@ -22,6 +24,7 @@ const movies = [
     genre: { _id: "5b21ca3eeb7f6fbccd471820", name: "Thriller" },
     numberInStock: 8,
     dailyRentalRate: 3.5,
+    like: false,
   },
   {
     _id: "5b21ca3eeb7f6fbccd471819",
@@ -29,6 +32,7 @@ const movies = [
     genre: { _id: "5b21ca3eeb7f6fbccd471814", name: "Comedy" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
+    like: false,
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181a",
@@ -36,6 +40,7 @@ const movies = [
     genre: { _id: "5b21ca3eeb7f6fbccd471814", name: "Comedy" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
+    like: false,
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181b",
@@ -43,6 +48,7 @@ const movies = [
     genre: { _id: "5b21ca3eeb7f6fbccd471814", name: "Comedy" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
+    like: false,
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181e",
@@ -50,6 +56,7 @@ const movies = [
     genre: { _id: "5b21ca3eeb7f6fbccd471820", name: "Thriller" },
     numberInStock: 7,
     dailyRentalRate: 4.5,
+    like: false,
   },
   {
     _id: "5b21ca3eeb7f6fbccd47181f",
@@ -57,6 +64,7 @@ const movies = [
     genre: { _id: "5b21ca3eeb7f6fbccd471820", name: "Thriller" },
     numberInStock: 4,
     dailyRentalRate: 3.5,
+    like: false,
   },
   {
     _id: "5b21ca3eeb7f6fbccd471821",
@@ -64,6 +72,7 @@ const movies = [
     genre: { _id: "5b21ca3eeb7f6fbccd471818", name: "Action" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
+    like: false,
   },
 ];
 
@@ -77,8 +86,8 @@ export function getMovie(id) {
 
 export function saveMovie(movie) {
   let movieInDb = movies.find((m) => m._id === movie._id) || {};
-  movieInDb.name = movie.name;
-  movieInDb.genre = genresAPI.genres.find((g) => g._id === movie.genreId);
+  movieInDb.title = movie.title;
+  movieInDb.genre = genresAPI.genres.find((g) => g._id === movie.genre._id);
   movieInDb.numberInStock = movie.numberInStock;
   movieInDb.dailyRentalRate = movie.dailyRentalRate;
 

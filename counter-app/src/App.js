@@ -10,19 +10,19 @@ class App extends Component {
     counters: [
       {
         id: 1,
-        value: 10,
+        value: 4,
       },
       {
         id: 2,
-        value: 10,
+        value: 0,
       },
       {
         id: 3,
-        value: 10,
+        value: 0,
       },
       {
         id: 4,
-        value: 10,
+        value: 0,
       },
     ],
   };
@@ -43,10 +43,15 @@ class App extends Component {
     this.setState({ counters });
   };
 
-  handleIncrement = (counter) => {
+  handleIncrement = (counter, operator) => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
-    counter.value++;
+    if (operator === "+") {
+      counter.value++;
+    }
+    if (operator === "-") {
+      counter.value--;
+    }
     counters[index] = { ...counter };
 
     this.setState({ counters });
