@@ -12,12 +12,12 @@ import NotFound from "./components/notFound";
 
 function App() {
   return (
-    <div className="container">
+    <React.Fragment>
       <NavBar></NavBar>
-      <div className="pageContainer">
+      <div className="container">
         <Switch>
-          <Redirect from="/" to="/home" exact></Redirect>
           <Route path="/home" exact component={Home}></Route>
+          <Redirect from="/" to="/home" exact></Redirect>
           <Route path="/movies" exact component={Movie}></Route>
           /* Optional params append? ex: /products/:id? */
           <Route path="/movies/:id" exact component={MovieDetails}></Route>
@@ -33,7 +33,7 @@ function App() {
           <Redirect to="/not-found"></Redirect>
         </Switch>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 

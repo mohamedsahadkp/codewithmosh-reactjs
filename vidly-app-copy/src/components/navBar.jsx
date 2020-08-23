@@ -18,7 +18,7 @@ class NavBar extends Component {
         <div className="collapse navbar-collapse" id="navbarNav">
           <div className="navbar-nav">
             {this.navBarItems.map((item) => (
-              <NavLink className="nav-link" key={item.key} to={item.route}>
+              <NavLink key={item.key} className="nav-link" to={item.route}>
                 {item.label}
               </NavLink>
             ))}
