@@ -7,6 +7,8 @@ class NavBar extends Component {
     { key: "home", label: "Home", route: "/home" },
     { key: "movies", label: "Movies", route: "/movies" },
     { key: "about-us", label: "About Us", route: "/about-us" },
+    { key: "login", label: "Login", route: "/login" },
+    { key: "registration", label: "Registration", route: "/registration" },
   ];
 
   render() {

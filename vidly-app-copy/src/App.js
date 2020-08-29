@@ -9,6 +9,8 @@ import MovieDetails from "./components/movieDetails";
 
 import AboutUs from "./components/aboutUs";
 import NotFound from "./components/notFound";
+import LoginForm from "./components/loginForm";
+import RegistrationForm from "./components/registrationForm";
 
 function App() {
   return (
@@ -16,6 +18,12 @@ function App() {
       <NavBar></NavBar>
       <div className="container">
         <Switch>
+          <Route
+            path="/registration"
+            component={RegistrationForm}
+            exact
+          ></Route>
+          <Route path="/login" exact component={LoginForm} exact></Route>
           <Route path="/home" exact component={Home}></Route>
           <Redirect from="/" to="/home" exact></Redirect>
           <Route path="/movies" exact component={Movie}></Route>
