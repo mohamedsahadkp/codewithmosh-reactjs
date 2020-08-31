@@ -1,17 +1,17 @@
 import React from "react";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
+
+import Movie from "./components/movie/movie";
+import MovieDetails from "./components/movie/movieDetails";
+import MovieFrom from "./components/movie/movieForm";
 
 import NavBar from "./components/navBar";
 import Home from "./components/home";
-import Movie from "./components/movie";
-import MovieDetails from "./components/movieDetails";
-
 import AboutUs from "./components/aboutUs";
 import NotFound from "./components/notFound";
 import LoginForm from "./components/loginForm";
 import RegistrationForm from "./components/registrationForm";
-import MovieFrom from "./components/movieForm";
 
 function App() {
   return (

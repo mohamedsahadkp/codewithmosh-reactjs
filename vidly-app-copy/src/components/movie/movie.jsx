@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import MovieTable from "./movieTable";
 import MovieNavBar from "./movieNavBar";
 
-import Pagination from "./common/pagination";
-import ListGroup from "./common/listGroup";
+import Pagination from "../common/pagination";
+import ListGroup from "../common/listGroup";
 
 import _ from "lodash";
 
@@ -12,9 +12,9 @@ import {
   saveMovie,
   getMovies,
   deleteMovie,
-} from "../services/fakeMovieService";
-import { getGenres } from "../services/fakeGenreService";
-import { paginate } from "../util/paginate";
+} from "../../services/fakeMovieService";
+import { getGenres } from "../../services/fakeGenreService";
+import { paginate } from "../../util/paginate";
 
 class Movie extends Component {
   state = {
@@ -37,15 +37,15 @@ class Movie extends Component {
   };
 
   handleLikeMovie = (movie) => {
-    // const movies = [...this.state.movies];
-    // const index = movies.indexOf(movie);
-    // movies[index] = { ...movies[index] };
-    // movies[index].like = !movies[index].like;
-    // this.setState({ movies });
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(movie);
+    movies[index] = { ...movies[index] };
+    movies[index].like = !movies[index].like;
+    this.setState({ movies });
 
-    movie.like = !movie.like;
-    saveMovie(movie);
-    this.setState({ movies: getMovies() });
+    // movie.like = !movie.like;
+    // saveMovie(movie);
+    // this.setState({ movies: getMovies() });
   };
 
   handlePageChange = (page) => {
@@ -58,6 +58,10 @@ class Movie extends Component {
 
   handleSortMovie = (sortedColum) => {
     this.setState({ sortedColum });
+  };
+
+  handleSearch = (searchText) => {
+    console.log(searchText);
   };
 
   getPagedData = () => {
@@ -93,7 +97,11 @@ class Movie extends Component {
 
     return (
       <div>
-        <MovieNavBar totalCount={totalCount} {...this.props}></MovieNavBar>
+        <MovieNavBar
+          totalCount={totalCount}
+          onSearch={this.handleSearch}
+          {...this.props}
+        ></MovieNavBar>
         <div className="row">
           <div className="col-3">
             <ListGroup
