@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 
 import NavBar from "./components/navBar";
@@ -11,6 +11,7 @@ import AboutUs from "./components/aboutUs";
 import NotFound from "./components/notFound";
 import LoginForm from "./components/loginForm";
 import RegistrationForm from "./components/registrationForm";
+import MovieFrom from "./components/movieForm";
 
 function App() {
   return (
@@ -23,13 +24,12 @@ function App() {
             component={RegistrationForm}
             exact
           ></Route>
-          <Route path="/login" exact component={LoginForm} exact></Route>
-          <Route path="/home" exact component={Home}></Route>
           <Redirect from="/" to="/home" exact></Redirect>
-          <Route path="/movies" exact component={Movie}></Route>
-          /* Optional params append? ex: /products/:id? */
-          <Route path="/movies/:id" exact component={MovieDetails}></Route>
-          /* Passig custom props to component*/
+          <Route path="/login" component={LoginForm} exact></Route>
+          <Route path="/home" component={Home} exact></Route>
+          <Route path="/movies" component={Movie} exact></Route>
+          <Route path="/movies/new" component={MovieFrom} exact></Route>
+          <Route path="/movies/:id?" component={MovieDetails} exact></Route>
           <Route
             path="/about-us"
             component={(props) => (
@@ -37,7 +37,7 @@ function App() {
             )}
             exact
           ></Route>
-          <Route path="/not-found" component={NotFound}></Route>
+          <Route path="/not-found" component={NotFound} exact></Route>
           <Redirect to="/not-found"></Redirect>
         </Switch>
       </div>

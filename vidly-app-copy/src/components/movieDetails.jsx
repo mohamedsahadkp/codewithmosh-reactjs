@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import queryString from "query-string";
+import Form from "./common/form";
 
-class MovieDetails extends Component {
+class MovieDetails extends Form {
   handleSave = () => {
     this.props.history.push("/movies");
   };

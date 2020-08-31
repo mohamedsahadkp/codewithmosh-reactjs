@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import MovieTable from "./movieTable";
+import MovieNavBar from "./movieNavBar";
+
 import Pagination from "./common/pagination";
 import ListGroup from "./common/listGroup";
 
@@ -90,29 +92,31 @@ class Movie extends Component {
     const { totalCount, movies } = this.getPagedData();
 
     return (
-      <div className="row">
-        <div className="col-3">
-          <ListGroup
-            items={this.state.genres}
-            selectedItem={selectedGenre}
-            onItemSelect={this.handledGenreSelect}
-          ></ListGroup>
-        </div>
-        <div className="col">
-          <p>Showing {totalCount} movies of database</p>
-          <MovieTable
-            movies={movies}
-            sortedColum={sortedColum}
-            onLike={this.handleLikeMovie}
-            onDelete={this.handleDeleteMovie}
-            onSort={this.handleSortMovie}
-          ></MovieTable>
-          <Pagination
-            itemCount={totalCount}
-            pageSize={pageSize}
-            currentPage={currentPage}
-            onPageChange={this.handlePageChange}
-          ></Pagination>
+      <div>
+        <MovieNavBar totalCount={totalCount} {...this.props}></MovieNavBar>
+        <div className="row">
+          <div className="col-3">
+            <ListGroup
+              items={this.state.genres}
+              selectedItem={selectedGenre}
+              onItemSelect={this.handledGenreSelect}
+            ></ListGroup>
+          </div>
+          <div className="col">
+            <MovieTable
+              movies={movies}
+              sortedColum={sortedColum}
+              onLike={this.handleLikeMovie}
+              onDelete={this.handleDeleteMovie}
+              onSort={this.handleSortMovie}
+            ></MovieTable>
+            <Pagination
+              itemCount={totalCount}
+              pageSize={pageSize}
+              currentPage={currentPage}
+              onPageChange={this.handlePageChange}
+            ></Pagination>
+          </div>
         </div>
       </div>
     );
