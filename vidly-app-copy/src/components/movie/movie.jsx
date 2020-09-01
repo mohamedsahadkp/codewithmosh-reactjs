@@ -9,7 +9,7 @@ import ListGroup from "../common/listGroup";
 import _ from "lodash";
 
 import {
-  saveMovie,
+  searchMovieByName,
   getMovies,
   deleteMovie,
 } from "../../services/fakeMovieService";
@@ -24,6 +24,7 @@ class Movie extends Component {
     currentPage: 1,
     selectedGenre: null,
     sortedColum: { path: "title", order: "asc" },
+    searchQuery: "",
   };
 
   componentDidMount() {
@@ -53,15 +54,25 @@ class Movie extends Component {
   };
 
   handledGenreSelect = (genre) => {
-    this.setState({ selectedGenre: genre._id, currentPage: 1 });
+    this.setState({
+      selectedGenre: genre._id,
+      searchQuery: "",
+      currentPage: 1,
+    });
   };
 
   handleSortMovie = (sortedColum) => {
     this.setState({ sortedColum });
   };
 
-  handleSearch = (searchText) => {
-    console.log(searchText);
+  handleSearch = (query) => {
+    const movies = searchMovieByName(query);
+    this.setState({
+      searchQuery: query,
+      movies: movies ? movies : [],
+      selectedGenre: null,
+      currentPage: 1,
+    });
   };
 
   getPagedData = () => {
@@ -88,17 +99,17 @@ class Movie extends Component {
   };
 
   render() {
-    const { length: movieCount } = this.state.movies;
+    // const { length: movieCount } = this.state.movies;
+    // if (movieCount <= 0) return <p>There is no movies in the database</p>;
+
     const { pageSize, currentPage, sortedColum, selectedGenre } = this.state;
-
-    if (movieCount <= 0) return <p>There is no movies in the database</p>;
-
     const { totalCount, movies } = this.getPagedData();
 
     return (
       <div>
         <MovieNavBar
           totalCount={totalCount}
+          searchQuery={this.searchQuery}
           onSearch={this.handleSearch}
           {...this.props}
         ></MovieNavBar>

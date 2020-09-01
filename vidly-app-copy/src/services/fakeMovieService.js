@@ -104,3 +104,10 @@ export function deleteMovie(id) {
   movies.splice(movies.indexOf(movieInDb), 1);
   return movieInDb;
 }
+
+export function searchMovieByName(name) {
+  // if (!name) return [];
+  return movies.filter((m) =>
+    m.title.toLowerCase().includes(name.toLowerCase())
+  );
+}

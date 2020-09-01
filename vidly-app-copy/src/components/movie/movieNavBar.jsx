@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import Input from "../common/input";
+import SearchBox from "../common/searchBox";
 
 class MovieNavBar extends Component {
-  state = {
-    searchText: "cdcd",
-  };
-
   handleNewMovie = () => {
     this.props.history.push("/movies/new");
   };
@@ -14,22 +10,15 @@ class MovieNavBar extends Component {
     return (
       <div className="row">
         <div className="col-3 my-auto">
-          <label>Showing {this.props.totalCount} movies of database</label>
+          <label> Showing {this.props.totalCount} movies of database</label>
         </div>
-        <div className="col-7">
-          <Input
-            type="text"
-            name="search"
-            value={this.state.search}
-            label=""
-            placeholder="Search"
-            onChange={() => {
-              this.props.onSearch(this.state.searchText);
-            }}
-            error=""
-          ></Input>
+        <div className="col-7 my-auto">
+          <SearchBox
+            value={this.props.searchQuery}
+            onChange={this.props.onSearch}
+          ></SearchBox>
         </div>
-        <div className="col">
+        <div className="col my-auto">
           <button
             onClick={this.handleNewMovie}
             className="btn btn-primary btn-md"
